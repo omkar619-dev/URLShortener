@@ -7,6 +7,7 @@ const staticRoute = require("./routes/staticRouter");
 const userRoute = require("./routes/user")
 
 const URL = require("./models/url");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 connectToDB("mongodb://localhost:27017/short-url").then(()=>{console.log("MONGODB CONNECTED!");});
@@ -14,6 +15,7 @@ app.set('view engine',"ejs");
 app.set("views",path.resolve("./views"))
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(cookieParser())
 app.use("/",staticRoute);
 app.use('/user',userRoute);
 

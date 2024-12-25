@@ -29,6 +29,10 @@ const urlSchema = new mongoose.Schema(
             ],
             default: [], // Default value for visitHistory
         },
+        createdBy:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"users"
+        }
     },
     { timestamps: true } // Adds createdAt and updatedAt fields
 );
